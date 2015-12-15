@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <didle></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+  </head>
+  <body>
+    <style>
+    .t-width, .t-bgc, .t-1, .t-5, .td-2, .td-0, .ttf-1001, .ttf-0110, .ttf-s3s, .ttf-s3e{
+      width: 200px;
+      height: 100px;
+      margin: 10px 0;
+    }
+    .t-width, .t-bgc{
+      transition-duration: 1s;
+      transition-timing-function: linear;
+      -webkit-transition-duration: 1s;
+      -webkit-transition-timing-function: linear;
+    }
+    .t-1, .t-5{
+      transition-property:all;
+      transition-duration: 1s;
+      transition-timing-function: linear;
+      -webkit-transition-property:all;
+      -webkit-transition-duration: 1s;
+      -webkit-transition-timing-function: linear;
+    }
+    .td-2, .td-0{
+      transition-property:all;
+      transition-duration: 1s;
+      transition-timing-function: ease;
+      -webkit-transition-property:all;
+      -webkit-transition-duration: 1s;
+      -webkit-transition-timing-function: ease;
+    }
+    .ttf-1001, .ttf-0110, .ttf-s3s, .ttf-s3e{
+      transition-property:all;
+      transition-duration: 3s;
+      -webkit-transition-property:all;
+      -webkit-transition-duration: 3s;
+    }
+
+    .t-width{
+      transition-property:width;
+      -webkit-transition-property:width;
+      background-color: #1bbc9b;
+    }
+    .t-width:hover{
+      background-color: #46b39e;
+    }
+
+    .t-bgc{
+      transition-property:background-color;
+      -webkit-transition-property:background-color;
+      background-color: #58d68d;
+    }
+    .t-bgc:hover{
+      background-color: #27ae61;
+    }
+
+    .t-1{
+      transition-duration:1s;
+      -webkit-transition-duration:1s;
+      background-color: #3598db;
+    }
+    .t-1:hover{
+      background-color: #297fb8;
+    }
+
+    .t-5{
+      transition-duration:5s;
+      -webkit-transition-duration:5s;
+      background-color: #9a59b5;
+    }
+    .t-5:hover{
+      background-color: #8d44ad;
+    }
+
+    .td-2{
+      transition-delay: 2s;
+      -webkit-transition-delay: 2s;
+      background-color: #e67f22;
+    }
+    .td-2:hover{
+      background-color: #d25400;
+    }
+
+    .td-0{
+      background-color: #e84c3d;
+    }
+    .td-0:hover{
+      background-color: #c1392b;
+    }
+
+    .ttf-1001{
+      transition-timing-function: cubic-bezier(1, 0, 0, 1);
+      -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+      background-color: #f1c40f;
+    }
+    .ttf-1001:hover{
+      background-color: #f39c11;
+    }
+
+    .ttf-0110{
+      transition-timing-function: cubic-bezier(0, 1, 1, 0);
+      -webkit-transition-timing-function: cubic-bezier(0, 1, 1, 0);
+      background-color: #34495e;
+    }
+    .ttf-0110:hover{
+      background-color: #2d3e50;
+    }
+
+    .ttf-s3s{
+      transition-timing-function: steps(3, start);
+      -webkit-transition-timing-function: steps(3, start);
+      background-color: #95a5a5;
+    }
+    .ttf-s3s:hover{
+      background-color: #7e8c8d;
+    }
+
+    .ttf-s3e{
+      transition-timing-function: steps(3, end);
+      -webkit-transition-timing-function: steps(3, end);
+      background-color: #bec3c7;
+    }
+    .ttf-s3e:hover{
+      background-color: #72828f;
+    }
+
+    .t-width:hover, .t-bgc:hover, .t-1:hover, .t-5:hover, .td-2:hover, .td-0:hover, .ttf-1001:hover, .ttf-0110:hover, .ttf-s3s:hover, .ttf-s3e:hover{
+      width: 400px;
+    }
+    </style>
+    <div class="t-width">过渡的是宽度</div>
+    <div class="t-bgc">过渡的是背景颜色</div>
+
+    <div class="t-1">过渡1秒</div>
+    <div class="t-5">过渡5秒</div>
+
+    <div class="td-2">2秒延迟</div>
+    <div class="td-0">无延迟</div>
+
+    <div class="ttf-1001">贝塞尔曲线1,0,0,1</div>
+    <div class="ttf-0110">贝塞尔曲线0,1,1,0</div>
+    <div class="ttf-s3s">steps(3, start)</div>
+    <div class="ttf-s3e">steps(3, end)</div>
+  </body>
+</html>
