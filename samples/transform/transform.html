@@ -8,8 +8,58 @@
   </head>
   <body>
     <style>
-    
+    .box{
+      width:200px;
+      height: 150px;
+      background-color:#bec3c7;
+      margin: 20px 0;
+    }
+    .box div{
+      width: 100px;
+      height: 50px;
+    }
+    .contrast{
+      background-color: #3598db;
+    }
+    .translate{
+      background-color:#f1c40f;
+      transform: translate(50px, 30px);
+      -ms-transform: translate(50px, 30px); /* IE 9 */
+      -webkit-transform: translate(50px, 30px); /* Safari and Chrome */
+    }
+    .rotate{
+      background-color:#e67f22;
+      transform:rotate(45deg);
+      -ms-transform:rotate(45deg); /* IE 9 */
+      -webkit-transform:rotate(45deg); /* Safari and Chrome */
+    }
+    .scale{
+      background-color:#e84c3d;
+      transform: scale(0.5,2);
+      -ms-transform: scale(0.5,2); /* IE 9 */
+      -webkit-transform: scale(0.5,2); /* Safari and Chrome */
+    }
+    .skew{
+      background-color:#9a59b5;
+      transform:skew(30deg,20deg);
+      -ms-transform:skew(30deg,20deg); /* IE 9 */
+      -webkit-transform:skew(30deg,20deg); /* Safari and Chrome */
+    }
     </style>
-    <div class="t-width">这个是用来做对比的</div>
+    <div class="box">
+      <div class="contrast">这个是用来做对比的</div>
+    </div>
+    <div class="box">
+      <div class="contrast translate">这个是translate</div>
+    </div>
+    <div class="box">
+      <div class="contrast rotate">这个是rotate</div>
+    </div>
+    <div class="box">
+      <div class="contrast scale">这个是scale</div>
+    </div>
+    <div class="box">
+      <div class="contrast skew">这个是skew</div>
+    </div>
   </body>
 </html>
