@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>我飞了</title>
+
+<style type="text/css">
+button{
+  display: block;
+  margin: 0 auto;
+}
+#box{
+  margin: 0 auto;
+  width: 100px;
+}
+.box-fly{
+  transform:rotate(-3600deg);
+  transform-origin:50% 100%;
+  -ms-transform:rotate(-3600deg);
+  -ms-transform-origin:50% 100%;
+  -webkit-transform:rotate(-3600deg);
+  -webkit-transform-origin:50% 100%;
+  -o-transform:rotate(-3600deg);
+  -o-transform-origin:50% 100%;
+  -moz-transform:rotate(-3600deg);
+  -moz-transform-origin:50% 100%;
+  transition:all 3s;
+}
+#fly{
+  width: 100px;
+  height: 100px;
+  background: #abcdef;
+  margin-top: 300px;
+}
+.fly{
+  transform: translate(0,-500%) rotate(3000deg);
+  -ms-transform: translate(0,-500%) rotate(3000deg);   /* IE 9 */
+  -webkit-transform: translate(0,-500%) rotate(3000deg); /* Safari and Chrome */
+  -o-transform: translate(0,-500%) rotate(3000deg);    /* Opera */
+  -moz-transform: translate(0,-500%) rotate(3000deg);    /* Firefox */
+  transition:all 3s;
+}
+</style>
+</head>
+<body>
+<div id="box">
+  <div id="fly">我飞了！</div>
+</div>
+  <button type="button" onclick="myFly()">点我</button>
+  <script type="text/javascript">
+    function myFly () {
+      document.getElementById('fly').className="fly";
+      document.getElementById('box').className="box-fly";
+      setTimeout(function(){
+          document.getElementById('fly').className="";
+          document.getElementById('box').className="";
+      },3000);
+    }
+  </script>
+</body>
+</html>
