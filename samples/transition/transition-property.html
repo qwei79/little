@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>transition-property</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+  </head>
+  <body>
+    <style>
+    .transition-property{
+      width: 100px;
+      height: 100px;
+      transition-duration: 1s;
+      transition-timing-function: linear;
+      -webkit-transition-duration: 1s;
+      -webkit-transition-timing-function: linear;
+      margin: 10px 0;
+    }
+    .t-width{
+      transition-property:width;
+      -webkit-transition-property:width;
+      background-color: #3598db;
+    }
+    .t-height{
+      transition-property:height;
+      -webkit-transition-property:height;
+      background-color: #e67f22;
+    }
+    .t-width:hover{
+      width: 200px;
+      height: 200px;
+    }
+    .t-height:hover{
+      width:200px;
+      height:200px;
+    }
+    </style>
+    <div class="transition-property t-width">过渡的是宽度</div>
+    <div class="transition-property t-height">过渡的是高度</div>
+  </body>
+</html>
