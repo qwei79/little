@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>乘法表</title>
+
+<style type="text/css">
+	td{
+		transition-property:all;
+        -webkit-transition-property:all;
+        opacity: 0;
+	}
+	td.show{
+		opacity: 1;
+	}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+
+  var table = document.createElement('table');
+  var a=1;
+  for(var i=1;i<=9;i++){
+    var tr=document.createElement('tr');
+    for(var j=1; j<=9; j++){
+      var td = document.createElement('td')
+      if (j<=i) {
+      td.innerHTML = j + 'x' + i + '=' + i*j + '&nbsp;&nbsp;';
+      tr.appendChild(td);
+      td.style.transitionDelay=a+"s";
+      a++;
+  	  }else{
+  	  td.innerHTML = '&nbsp;&nbsp;';
+  	  td.style.border = 0 ;
+      tr.appendChild(td);
+  	  };
+    }
+    table.appendChild(tr);
+    table.border = 1 ;
+    table.style.border=0;
+  }
+  document.body.appendChild(table);
+
+(function(){
+  var ul = document.createElement('ul');
+  for(var i=1;i<=9;i++){
+    var li=document.createElement('li');
+    li.style.listStyle='none';
+    for(var j=1; j<=i; j++){
+      var span = document.createElement('span')
+      span.innerHTML = j + 'x' + i + '=' + i*j;
+      span.style.display='inline-block';
+      span.style.borderWidth=1;
+      span.style.borderStyle='solid';
+      span.style.borderColor='#ccc';
+      span.style.width='60px';
+      span.style.padding='5px 0 5px 0px';
+      span.style.margin='-1px 0px 0 -1px';
+      span.style.fontSize='12px';
+      span.style.textAlign='center';
+      li.appendChild(span);
+    }
+    ul.appendChild(li);
+  }
+  document.body.appendChild(ul);
+})();
+
+
+</script>
+</body>
+</html>
