@@ -69,6 +69,7 @@ function eleBottom() {
   } 
 }
 
+
 window.onresize = function(){
   pubuliu();
 }/* window.onresize end */
