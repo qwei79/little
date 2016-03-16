@@ -77,4 +77,5 @@ function cssHelloWorld(){
 }
 function jsHelloWorld(){
   document.getElementById("effect").innerHTML="你没发现这个弹出就是js实现的吗？";
+  helloWorld();
 }
