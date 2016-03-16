@@ -1,0 +1,14 @@
+footer{width:100%;}
+.button-group{text-align: center;}
+.button-group button{
+  width: 10%;
+  min-width: 100px;
+  padding: 5px;
+  margin: 0 3px;
+  background-color: #3598db;
+  border:1px solid #297fb8;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button-group button:hover{background-color: #37a0e5; border-color: #3598db;}

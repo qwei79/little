@@ -1,0 +1,21 @@
+.wrapper{margin: 0 auto;}
+/*估计是大设备*/
+@media screen and (min-width: 1200px) {
+  .wrapper{width: 1190px;}
+}
+/*估计是电脑设备*/
+@media screen and (min-width: 960px) and (max-width: 1199px) {
+  .wrapper{width: 940px;}
+}
+/*估计是平板设备*/
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  .wrapper{width: 750px;}
+}
+/*估计手机设备*/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .wrapper{width: 100%;}
+}
+/*最小设备*/
+@media only screen and (max-width: 479px) {
+  .wrapper{width: 100%;}
+}
