@@ -1,7 +1,8 @@
-function hereDoc(f) {　
-  return f.toString().replace(/^[^\/]+\/\*!?\s?/, '').replace(/\*\/[^\/]+$/, '');
-}
-play_console = hereDoc(function(){/*
+function helloWorld(){
+  function hereDoc(f) {　
+    return f.toString().replace(/^[^\/]+\/\*!?\s?/, '').replace(/\*\/[^\/]+$/, '');
+  }
+  play_console = hereDoc(function(){/*
 
  _      _   _________   _           _            ______      _          _    ______    ________    _           _______
 | |    | | |  _______| | |         | |          / ____ \    | |        | |  / ____ \  |  _____ \  | |         |  ____ \
@@ -13,6 +14,7 @@ play_console = hereDoc(function(){/*
 |_|    |_| |_________| |_________| |_________|  \______/      \__/  \__/    \______/  |_|     \_\ |_________| |______/
 
 换一种写法
+
  ___________
 |____   ____|
      | |    
@@ -63,5 +65,16 @@ play_console = hereDoc(function(){/*
 | |       | |
 | |_______| |
  \_________/
-  */});
+*/});
   console.log(play_console);
+}
+
+function htmlHelloWorld(){
+  document.getElementById("effect").innerHTML="Hello World!";
+}
+function cssHelloWorld(){
+  document.getElementById("effect").innerHTML="这是css版本的Hello World!";
+}
+function jsHelloWorld(){
+  document.getElementById("effect").innerHTML="你没发现这个弹出就是js实现的吗？";
+}

@@ -1,5 +1,5 @@
 footer{width:100%;}
-.button-group{text-align: center;}
+.button-group{text-align: center; margin: 15px auto;}
 .button-group button{
   width: 10%;
   min-width: 100px;
@@ -12,3 +12,4 @@ footer{width:100%;}
   cursor: pointer;
 }
 .button-group button:hover{background-color: #37a0e5; border-color: #3598db;}
+#effect{text-align: center; padding: 10px; height: 400px; border: 1px solid #37a0e5;}
