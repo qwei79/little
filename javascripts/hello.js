@@ -52,9 +52,9 @@ function helloWorld(){
  \_________/
  ___________
 |____   __  |
-  / /| |  | |
- / / | |__| |
-/_/   \____/
+   /   |  | |
+ _/ /| |__| |
+|__/  \____/
  ___________
 |  _________|
 | |
@@ -73,7 +73,7 @@ function htmlHelloWorld(){
   document.getElementById("effect").innerHTML="Hello World!";
 }
 function cssHelloWorld(){
-  document.getElementById("effect").innerHTML="这是css版本的Hello World!";
+  document.getElementById("effect").innerHTML="<div class='H'></div><div class='E'></div><div class='L'></div><div class='L'></div><div class='O'></div><div style='clear:both;'></div><div class='W'></div><div class='O'></div><div class='R'></div><div class='L'></div><div class='D'></div>";
 }
 function jsHelloWorld(){
   document.getElementById("effect").innerHTML="你没发现这个弹出就是js实现的吗？";
