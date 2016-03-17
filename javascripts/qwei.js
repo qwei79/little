@@ -73,7 +73,16 @@ function eleBottom() {
 window.onresize = function(){
   pubuliu();
 }/* window.onresize end */
+/*
 window.onload = function(){
   pubuliu();
   eleBottom();
+}*//* window.onload end */
+var onloadPoll = new Array;
+onloadPoll[onloadPoll.length]=pubuliu();
+onloadPoll[onloadPoll.length]=eleBottom();
+window.onload = function(){
+  for (var i = onloadPoll.length - 1; i >= 0; i--) {
+    onloadPoll[i];
+  };
 }/* window.onload end */
