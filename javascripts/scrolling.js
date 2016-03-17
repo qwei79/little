@@ -52,4 +52,3 @@ function startMoveX(i,sSheight){
   sScrolling.onmouseout=function(){timeri=setInterval(timer,10)};
 }
 
-onloadPool[onloadPool.length]=startMove();
