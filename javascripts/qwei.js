@@ -66,7 +66,7 @@ function eleBottom() {
         footer[i].style.bottom = 0;
       }
     }
-  } 
+  }
 }
 
 
@@ -77,7 +77,7 @@ window.onresize = function(){
 window.onload = function(){
   pubuliu();
   eleBottom();
-}*//* window.onload end */
+} window.onload end */
 var onloadPoll = new Array;
 onloadPoll[onloadPoll.length]=pubuliu();
 onloadPoll[onloadPoll.length]=eleBottom();
