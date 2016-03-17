@@ -6,14 +6,14 @@
   <title>JS Bin</title>
   <script>
     ;(function(window,undefined){
-      window.queue = [];
       var windowOnload={
+        queue:[],
         push:function(fn){
-          queue.push(fn);
+          this.queue.push(fn);
         },
         call:function(){
           for(var i=0;i<queue.length;i++){
-              queue[i]();
+              this.queue[i]();
           }
         }
       }
@@ -21,7 +21,8 @@
         windowOnload.call();
       }
       window.windowOnload = {
-        push:push
+        queue:windowOnload.queue,
+        push:windowOnload.push
       }
     })(window);
   </script>
@@ -30,3 +31,9 @@
 
 </body>
 </html>
+<script>
+  console.log(window.windowOnload.queue);
+  console.log(window.windowOnload.push);
+  console.log(window.windowOnload.call);
+  
+</script>
