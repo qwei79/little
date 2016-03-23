@@ -13,11 +13,8 @@ var btn_icon=document.getElementById("slide-icon").getElementsByTagName("a");
 for (var i = btn_icon.length - 1; i >= 0; i--) {
   btn_icon[i].onclick = function(num){
     return function(){
-      console.log(num);
-      slide_index=num;
       slideMove(num);
       auto_index=num+1;
-      console.log(num);
     }
   }(i);
 };
