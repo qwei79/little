@@ -45,7 +45,6 @@ function slideAutoMove() {
   slideMove(auto_index);
   auto_index += 1;
 }
-
 //图片切换
 function slideMove(index){
   if(index>slide_li.length-1) {
