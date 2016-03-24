@@ -59,3 +59,90 @@ function slideMove(index){
   slide_ul.style.left = -index * li_width + "px";
 }
 
+
+/****************
+** pro版的来啦 **
+****************/
+var pro=document.getElementById("slide-pro");
+var pro_ul=pro.getElementsByTagName("ul")[0];
+var pro_li=pro_ul.getElementsByTagName("li");
+console.log("测试li1"+pro_li);
+//设定li的宽度等于盒子宽度，并且隐藏起来，仅显示首个li
+pro_li_width=pro.offsetWidth;
+for (var i = pro_li.length - 1; i >= 0; i--) {
+  pro_li[i].style.width=pro_li_width + "px";
+  pro_li[i].style.display="none";
+};
+pro_li[0].style.display="block";
+pro_li[0].style.left=pro_li_width + "px";
+//设定ul的宽度等于三倍li宽度相加（左右各预留一个空位）
+pro_ul.style.width=pro_li_width*3 + "px";
+//设定ul始终显示中间位置
+pro_ul.style.left = -pro_li_width + "px";
+
+//点击对应标记则显示对应图片
+var pro_btn_icon=document.getElementById("slide-icon-pro").getElementsByTagName("a");
+for (var i = pro_btn_icon.length - 1; i >= 0; i--) {
+  pro_btn_icon[i].onclick = function(num){
+    return function(){
+      proSlideMove(num);
+      auto_index=num+1;
+    }
+  }(i);
+};
+//两侧按钮点击切换
+var pro_btn_l=document.getElementById("btnL-pro");
+var pro_btn_r=document.getElementById("btnR-pro");
+var pro_slide_index=0;
+pro_btn_l.onclick = function(){
+  pro_slide_index--;
+  proSlideMove(pro_slide_index);
+}
+pro_btn_r.onclick = function(){
+  pro_slide_index++;
+  proSlideMove(pro_slide_index);
+}
+//自动播放
+var pro_auto_index = 0;
+var pro_slide_mouse=setInterval(proSlideAutoMove,500);
+pro.onmouseover=function(){clearInterval(pro_slide_mouse)};
+pro.onmouseout=function(){pro_slide_mouse=setInterval(proSlideAutoMove,500)};
+function proSlideAutoMove() {
+  if(pro_auto_index == pro_btn_icon.length) {
+    pro_auto_index =0;
+  }
+  proSlideMove(pro_auto_index);
+  pro_auto_index += 1;
+}
+//图片切换
+function proSlideMove(pro_index){
+  var pro_index_now=0;
+  for (var i = pro_btn_icon.length - 1; i >= 0; i--) {
+    if (pro_btn_icon[i].className=="active") {
+      pro_index_now = i;
+    };
+  };
+  if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
+  if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
+  /*
+  if ((pro_index_now!=pro_li.length-1&&pro_index>pro_index_now)||(pro_index_now==pro_li.length-1&&pro_index==0)) {
+    pro_li[pro_index].style.display="block";
+    pro_li[pro_index].style.left=pro_li_width;
+    pro_li[pro_index_now].style.left=0;
+  };
+  if ((pro_index_now!=0&&pro_index<pro_index_now)||(pro_index_now==0&&pro_index==pro_li.length-1)) {
+    pro_li[pro_index].style.display="block";
+    pro_li[pro_index].style.left=pro_li_width;
+    pro_li[pro_index_now].style.left=pro_li_width*2;
+  };
+  */
+  pro_li[pro_index_now].style.left=pro_li_width*2+"px";
+  pro_li[pro_index].style.display="block";
+  pro_li[pro_index].style.left=pro_li_width+"px";
+  
+  for(var n=0;n<pro_btn_icon.length;n++) {
+    pro_btn_icon[n].className = ""; 
+  }
+  pro_btn_icon[pro_index].className = "active";
+
+}
