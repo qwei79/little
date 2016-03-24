@@ -93,7 +93,7 @@ a {
   left: 0px;
   top: 0px;
   width: 1000px;
-  transition:left .3s;
+  /* transition:left .3s; */
 }
 #slide-pro ul li {
   position: absolute;

@@ -122,9 +122,9 @@ function proSlideMove(pro_index){
       pro_index_now = i;
     };
   };
+  /*
   if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
   if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
-  /*
   if ((pro_index_now!=pro_li.length-1&&pro_index>pro_index_now)||(pro_index_now==pro_li.length-1&&pro_index==0)) {
     pro_li[pro_index].style.display="block";
     pro_li[pro_index].style.left=pro_li_width;
@@ -135,11 +135,48 @@ function proSlideMove(pro_index){
     pro_li[pro_index].style.left=pro_li_width;
     pro_li[pro_index_now].style.left=pro_li_width*2;
   };
+  
+  pro_li[pro_index].style.display="block";
   */
+  function rightMove(){
+    pro_li[pro_index_now]=pro_li[pro_index_now].offsetLeft+1+"px";
+    pro_li[pro_index]=pro_li[pro_index].offsetLeft+1+"px";
+  }
+  function leftMove(){
+    pro_li[pro_index_now]=pro_li[pro_index_now].offsetLeft-1+"px";
+    pro_li[pro_index]=pro_li[pro_index].offsetLeft-1+"px";
+  }
+  if(pro_index<pro_index_now) {
+    if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
+    pro_li[pro_index].style.left=0+"px";
+    var rightMoveAuto=setInterval(rightMove,1);
+    if(pro_li[pro_index_now].offsetLeft=pro_li_width){clearInterval(rightMoveAuto)};
+  }
+
+  if(pro_index>pro_index_now) {
+    if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
+    pro_li[pro_index].style.left=pro_li_width*2+"px";
+    var leftMoveAuto=setInterval(leftMove,1);
+    if(pro_li[pro_index_now].offsetLeft=0){clearInterval(leftMoveAuto)};
+  }
+
+  /*
   pro_li[pro_index_now].style.left=pro_li_width*2+"px";
   pro_li[pro_index].style.display="block";
   pro_li[pro_index].style.left=pro_li_width+"px";
   
+  for (var i = pro_li.length - 1; i >= 0; i--) {
+    if(pro_li[i]==(0+"px") {pro_li[i].style.display="none";}
+    if(pro_li[i]==(pro_li_width*2+"px") {pro_li[i].style.display="none";}
+  };
+  
+  setTimeout(function(){
+    for (var i = pro_li.length - 1; i >= 0; i--) {
+      if(i!=pro_index) pro_li[i].style.display="none";
+    };
+  }, 300);
+*/
+
   for(var n=0;n<pro_btn_icon.length;n++) {
     pro_btn_icon[n].className = ""; 
   }
