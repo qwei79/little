@@ -129,11 +129,6 @@ function proSlideMove(pro_index){
   console.log("接收值是"+ pro_index);
   if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
   if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
-  /*
-  pro_li[pro_index_now].style.left=pro_li_width+"px";
-  clearInterval(rightMoveAuto);
-  clearInterval(leftMoveAuto);
-  */
   var speed=10;//设置速度，数字越大，速度越快
   if(pro_index<pro_index_now) {
     //if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
@@ -175,8 +170,10 @@ function proSlideMove(pro_index){
     pro_btn_icon[n].className = ""; 
   }
   pro_btn_icon[pro_index].className = "active";
+  /*
   console.log("当前是" + pro_index);
   console.log("前一张是" + pro_index_now);
   console.log("自动准备是" + pro_auto_index);
   console.log("方向准备是" + pro_slide_index);
+  */
 }
