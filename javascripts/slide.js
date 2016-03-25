@@ -83,9 +83,22 @@ pro_ul.style.left = -pro_li_width + "px";
 var lock = false;
 //点击对应标记则显示对应图片
 var pro_btn_icon=document.getElementById("slide-icon-pro").getElementsByTagName("a");
+//默认当前所在
+var pro_index_now=0;
 for (var i = pro_btn_icon.length - 1; i >= 0; i--) {
   pro_btn_icon[i].onclick = function(num){
     return function(){
+      if(num == pro_index_now) {
+        //解锁
+        lock = false;
+        return;
+      }
+      if (lock) {
+        console.log("锁了");
+        return;
+      }
+      console.log("上锁");
+      lock = true;//上锁
       proSlideMove(num);
       pro_auto_index=num+1;
     }
@@ -96,7 +109,11 @@ var pro_btn_l=document.getElementById("btnL-pro");
 var pro_btn_r=document.getElementById("btnR-pro");
 var pro_slide_index=0;
 pro_btn_l.onclick = function(){
-  if (lock) return;
+  if (lock) {
+    console.log("锁了");
+    return;
+  }
+  console.log("上锁");
   lock = true;//上锁
   pro_slide_index--;
   if (pro_slide_index==-1) {pro_slide_index=pro_li.length-1;};
@@ -104,7 +121,11 @@ pro_btn_l.onclick = function(){
   proSlideMove(pro_slide_index);
 }
 pro_btn_r.onclick = function(){
-  if (lock) return;
+  if (lock) {
+    console.log("锁了");
+    return;
+  }
+  console.log("上锁");
   lock = true;//上锁
   pro_slide_index++;
   if (pro_slide_index==pro_li.length) {pro_slide_index=0;};
@@ -121,26 +142,36 @@ function proSlideAutoMove() {
     console.log("锁了");
     return;
   }
-  lock = true;//上锁
   if(pro_auto_index == pro_btn_icon.length) {
     pro_auto_index =0;
   }
   pro_slide_index = pro_auto_index;
+  if(pro_auto_index == pro_index_now){
+    if(pro_index_now == 0){
+      pro_auto_index += 1;
+    } else {
+      return;
+    }
+  }
   proSlideMove(pro_auto_index);
   pro_auto_index += 1;
+  
+  lock = true;//上锁
 }
 //图片切换
+
 function proSlideMove(pro_index){
-  var pro_index_now=0;
+  //更新当前所在
   for (var i = pro_btn_icon.length - 1; i >= 0; i--) {
     if (pro_btn_icon[i].className=="active") {
       pro_index_now = i;
     };
   };
-  console.log("接收值是"+ pro_index);
+  //if(pro_index == 0 && pro_index_now == 0) pro_index_now = 3;
+  console.log("当前值是"+ pro_index_now);
   if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
   if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
-  var speed=1;//设置速度，数字越大，速度越快
+  var speed=10;//设置速度，数字越大，速度越快
   if(pro_index<pro_index_now) {
     //if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
     pro_li[pro_index].style.display="block";
