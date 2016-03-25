@@ -79,6 +79,8 @@ pro_ul.style.width=pro_li_width*3 + "px";
 //设定ul始终显示中间位置
 pro_ul.style.left = -pro_li_width + "px";
 
+//设置判断锁
+var lock = false;
 //点击对应标记则显示对应图片
 var pro_btn_icon=document.getElementById("slide-icon-pro").getElementsByTagName("a");
 for (var i = pro_btn_icon.length - 1; i >= 0; i--) {
@@ -94,12 +96,16 @@ var pro_btn_l=document.getElementById("btnL-pro");
 var pro_btn_r=document.getElementById("btnR-pro");
 var pro_slide_index=0;
 pro_btn_l.onclick = function(){
+  if (lock) return;
+  lock = true;//上锁
   pro_slide_index--;
   if (pro_slide_index==-1) {pro_slide_index=pro_li.length-1;};
   pro_auto_index=pro_slide_index+1;
   proSlideMove(pro_slide_index);
 }
 pro_btn_r.onclick = function(){
+  if (lock) return;
+  lock = true;//上锁
   pro_slide_index++;
   if (pro_slide_index==pro_li.length) {pro_slide_index=0;};
   pro_auto_index=pro_slide_index+1;
@@ -111,6 +117,11 @@ var pro_slide_mouse=setInterval(proSlideAutoMove,700);
 pro.onmouseover=function(){clearInterval(pro_slide_mouse)};
 pro.onmouseout=function(){pro_slide_mouse=setInterval(proSlideAutoMove,700)};
 function proSlideAutoMove() {
+  if (lock) {
+    console.log("锁了");
+    return;
+  }
+  lock = true;//上锁
   if(pro_auto_index == pro_btn_icon.length) {
     pro_auto_index =0;
   }
@@ -129,7 +140,7 @@ function proSlideMove(pro_index){
   console.log("接收值是"+ pro_index);
   if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
   if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
-  var speed=10;//设置速度，数字越大，速度越快
+  var speed=1;//设置速度，数字越大，速度越快
   if(pro_index<pro_index_now) {
     //if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
     pro_li[pro_index].style.display="block";
@@ -137,8 +148,9 @@ function proSlideMove(pro_index){
     function rightMove(){
       pro_li[pro_index_now].style.left=pro_li[pro_index_now].offsetLeft+speed+"px";
       pro_li[pro_index].style.left=pro_li[pro_index].offsetLeft+speed+"px";
-      if(pro_li[pro_index].offsetLeft>=pro_li_width-speed&&pro_li[pro_index].offsetLeft<=pro_li_width+speed){
+      if(pro_li[pro_index].offsetLeft>=pro_li_width-speed-20 && pro_li[pro_index].offsetLeft<=pro_li_width+speed+20){
         clearInterval(rightMoveAuto);
+        lock = false;//解锁
         pro_li[pro_index].style.left=pro_li_width + "px";
         for(var n=0;n<pro_li.length;n++) {
           pro_li[n].style.display = (n==pro_index) ? ("block") : ("none");
@@ -155,8 +167,9 @@ function proSlideMove(pro_index){
     function leftMove(){
       pro_li[pro_index_now].style.left=pro_li[pro_index_now].offsetLeft-speed+"px";
       pro_li[pro_index].style.left=pro_li[pro_index].offsetLeft-speed+"px";
-      if(pro_li[pro_index].offsetLeft>=pro_li_width-speed&&pro_li[pro_index].offsetLeft<=pro_li_width+speed){
+      if(pro_li[pro_index].offsetLeft>=pro_li_width-speed-20 && pro_li[pro_index].offsetLeft<=pro_li_width+speed+20){
         clearInterval(leftMoveAuto);
+        lock = false;//解锁
         pro_li[pro_index].style.left=pro_li_width + "px";
         for(var n=0;n<pro_li.length;n++) {
           pro_li[n].style.display = (n==pro_index) ? ("block") : ("none");
