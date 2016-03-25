@@ -124,8 +124,6 @@ function proSlideMove(pro_index){
   };
   if(pro_index<pro_index_now) {
     if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
-    //if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
-    //pro_li[pro_index].style.left=pro_li_width+"px";
     pro_li[pro_index].style.display="block";
     pro_li[pro_index].style.left=0+"px";
     function rightMove(){
@@ -142,9 +140,7 @@ function proSlideMove(pro_index){
     };
   }
   if(pro_index>pro_index_now) {
-    //if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
     if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
-    //pro_li[pro_index].style.left=pro_li_width+"px";
     pro_li[pro_index].style.display="block";
     pro_li[pro_index].style.left=pro_li_width*2+"px";
     function leftMove(){
