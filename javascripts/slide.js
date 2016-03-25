@@ -107,9 +107,9 @@ pro_btn_r.onclick = function(){
 }
 //自动播放
 var pro_auto_index = 0;
-var pro_slide_mouse=setInterval(proSlideAutoMove,2000);
+var pro_slide_mouse=setInterval(proSlideAutoMove,700);
 pro.onmouseover=function(){clearInterval(pro_slide_mouse)};
-pro.onmouseout=function(){pro_slide_mouse=setInterval(proSlideAutoMove,2000)};
+pro.onmouseout=function(){pro_slide_mouse=setInterval(proSlideAutoMove,700)};
 function proSlideAutoMove() {
   if(pro_auto_index == pro_btn_icon.length) {
     pro_auto_index =0;
