@@ -176,7 +176,7 @@ function proSlideMove(pro_index){
   console.log("当前值是"+ pro_index_now);
   if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
   if (pro_index>pro_li.length-1) {pro_index=0;pro_slide_index=pro_index;};
-  var speed=10;//设置速度，数字越大，速度越快
+  var speed=500;//设置速度，数字越大，速度越快
   if(pro_index<pro_index_now) {
     //if (pro_index<0) {pro_index=pro_li.length-1;pro_slide_index=pro_index;};
     pro_li[pro_index].style.display="block";
