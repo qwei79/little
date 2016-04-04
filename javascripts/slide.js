@@ -98,7 +98,8 @@ for (var i = pro_btn_icon.length - 1; i >= 0; i--) {
         return;
       }
       console.log("上锁");
-      lock = true;//上锁
+      //先不设置锁
+      //lock = true;
       proSlideMove(num);
       pro_auto_index=num+1;
     }
@@ -119,14 +120,18 @@ pro_btn_l.onclick = function(){
   if (pro_slide_index==-1) {pro_slide_index=pro_li.length-1;};
   pro_auto_index=pro_slide_index+1;
   proSlideMove(pro_slide_index);
+  //解锁
+  console.log("解锁");
+  lock = false;
 }
 pro_btn_r.onclick = function(){
   if (lock) {
     console.log("锁了");
     return;
   }
-  console.log("上锁");
-  lock = true;//上锁
+  //console.log("上锁");
+  //先不设置锁
+  //lock = true;
   pro_slide_index++;
   if (pro_slide_index==pro_li.length) {pro_slide_index=0;};
   pro_auto_index=pro_slide_index+1;
