@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>波浪线</title>
+    <style type="text/css">
+    #bo{overflow: hidden;}
+    .bolang-top, .bolang-bottom{width:100%; height: 200px; position: relative;}
+    .bolang-top, .bo-bottom{background-color: #e84c3d;}
+    .bolang-bottom, .bo-top{background-color: #58d68d;}
+    .bo-top{
+      position: absolute;
+      bottom: -5px;
+    }
+    .bo-bottom{
+      position: absolute;
+      top: -5px;
+    }
+    .bo-top, .bo-bottom{
+      transform:rotate(45deg);
+      border-radius:50%;
+    }
+    </style>
+  </head>
+  <body>
+    <input type="number" id="size" style="position: fixed; z-index: 999;" value="20">
+    <div id="bo">
+      <div id="bo-top" class="bolang-top"></div>
+      <div id="bo-bottom" class="bolang-bottom"></div>
+    </div>
+    <p>随手写的，懒了，没分文件。</p>
+    <script type="text/javascript">
+    ;(function(){
+      var bo = document.getElementById("bo");
+      var bo_top = document.getElementById("bo-top");
+      var bo_bottom = document.getElementById("bo-bottom");
+      var lang_width = 20;
+      var boWidth = bo.offsetWidth;
+
+      var oInput = document.getElementById('size');
+
+      oInput.addEventListener('input', bulidBoLang);
+
+      function bulidBoLang(e) {
+        var size = e ? (e.target.value < lang_width ? lang_width : e.target.value) : lang_width;
+        // 清空html
+        bo_top.innerHTML = '';
+        bo_bottom.innerHTML = '';
+        //创建波浪
+        for(var i=0; i<bo.offsetWidth/10; i++){
+          var lang_top = document.createElement("div");
+          lang_top.setAttribute('class','bo-top');
+          lang_top.style.left = i*2*size - size/2 + "px";
+          lang_top.style.bottom = - size/2 + "px";
+          lang_top.style.width = size + "px";
+          lang_top.style.height = size + "px";
+          bo_top.appendChild(lang_top);
+          var lang_bottom = document.createElement("div");
+          lang_bottom.setAttribute('class','bo-bottom');
+          lang_bottom.style.left = i*2*size + size/2 + "px";
+          lang_bottom.style.top = - size/2 + "px";
+          lang_bottom.style.width = size + "px";
+          lang_bottom.style.height = size + "px";
+          bo_bottom.appendChild(lang_bottom);
+        }
+      }
+
+      bulidBoLang();
+    })();
+    </script>
+  </body>
+</html>
