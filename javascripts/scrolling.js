@@ -1,5 +1,9 @@
 function startMove(){
   var sScrolling=document.getElementsByClassName("sscrolling"),i;
+  var sScrollingY = document.getElementsByClassName("sscrolling-y"),j;
+  for(j = 0, j<sScrollingY.length; j++){
+    startMoveY(j);
+  }
   for(i=0; i<sScrolling.length; i++){
     var sUl=sScrolling[i].getElementsByTagName("ul")[0];
     var sLi=sUl.getElementsByTagName("li");
@@ -52,3 +56,18 @@ function startMoveX(i,sSheight){
   sScrolling.onmouseout=function(){timeri=setInterval(timer,10)};
 }
 
+/*
+* 这里放的是竖版的js
+* 实现原理和横板一样，后期看看能不能合并……
+*/
+function starMoveY(j){
+  var sScrolling = document.getElementsByClassName("sscrolling-y")[j];
+  var sUl,sLi,sUlh = 0;
+  sUl = sScrolling.getElementsByTagName("ul")[0];
+  sLi = sUl.getElementsByTagName("li");
+  var rootUl = sUl.innerHTML;
+  sUL.innerHTML += sUl.innerHTML;
+  for(var i = 0; i<sLi.length; i++){
+    sUlh += sLi[i].offsetHeight + 10;
+  }
+}

@@ -3,7 +3,7 @@
 .sscrolling li{float:left; margin-left:10px;}
 .sscrolling li p{text-align: center;}
 /* 准备写个竖版的 */
-.sscrolling-y{overflow:hidden; position:relative; margin: 15px 0; padding: 0;}
+.sscrolling-y{overflow:hidden; position:relative; margin: 15px 0; padding: 0; width:200px; height:400px;}
 .sscrolling-y ul{position:absolute; top:0; left:10px; padding: 0;}
 .sscrolling-y li{margin-top: 10px;}
 .sscrolling-y li p{text-align:center;}
