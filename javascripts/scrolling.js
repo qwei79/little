@@ -65,9 +65,36 @@ function starMoveY(j){
   var sUl,sLi,sUlh = 0;
   sUl = sScrolling.getElementsByTagName("ul")[0];
   sLi = sUl.getElementsByTagName("li");
+  //设定li的宽度统一为第一个li的宽度
+  for(var i = 0; i<sLi.length; i++){
+    sLi[i].style.width = sLi[0].offsetHeight;
+  }
   var rootUl = sUl.innerHTML;
   sUL.innerHTML += sUl.innerHTML;
   for(var i = 0; i<sLi.length; i++){
     sUlh += sLi[i].offsetHeight + 10;
   }
+  //首次设定ul的高度，此时的ul是双倍
+  sUl.style.height = sUlh + 'px';
+  while((sScrolling.offsetHeight + (sUlh/2) - sUl.offsetHeight)>0){
+    sUl.innerHTML += rootUl;
+  }
+  //重新计算ul的高度
+  for(var i = 0; i<sLi.length; i++){
+    sUlh += sLi[i].offsetHeight + 10;
+  }
+  sUl.style.height = sUlh + 'px';
+  //设置ul的宽度
+  sScrolling.style.width = sLi[0].offsetHeight + 10 + 'px';
+  //滚动方法
+  function timeY(){
+    if(sUl.offsetLeft < -(sUlh/2)){
+      sUl.style.left = -1 + 'px';
+    }
+    sUl.style.left = sUl.offsetLeft -1 +'px';
+  }
+  var timeYauto;
+  timeYauto = setInterval(timeY,10);
+  sScrolling.onmouseover = function(){clearInterval(timeY)};
+  sScrolling.onmouseout = function(){timeYauto = setInterval(timeY,10)};
 }
