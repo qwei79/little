@@ -1,0 +1,32 @@
+p{
+    margin: 0;
+}
+.box {
+    margin: 10px;
+    height: 40px;
+    width: 800px;
+    font-size: 12px;
+    line-height: 40px;
+    border: 1px solid #eaeaea;
+    background-color: #fbfbfc;
+}
+.box p{
+    /*float: left;*/
+    display: inline-block;
+    width: 200px;
+}
+.first-p {
+    color: #666666;
+    font-weight: bold;
+
+    vertical-align: top;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 38px;
+}
+
+.second-p {
+    color: #999999;
+}
