@@ -1,0 +1,155 @@
+@charset "utf-8";
+/*公共标签样式*/
+html {
+  -webkit-text-size-adjust: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body {
+  font-size: 14px;
+  font-family: "microsoft Yahei", "KaiTi";
+  min-width: 1000px;
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+}
+em {
+  font-style: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+select,
+input,
+img,
+select {
+  vertical-align: middle;
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table tr {
+  margin: 0px;
+}
+/* 清除浮动*/
+.clear {
+  clear: both;
+}
+.mes-list {
+  margin: 10px;
+}
+.mes-list li {
+  list-style: none;
+  margin-bottom: 15px;
+  width: 740px;
+  height: 33px;
+  line-height: 33px;
+  border: 1px solid #eaeaea;
+  font-size: 12px;
+  background-color: #fbfbfc;
+}
+.mes-list li p {
+  display: inline-block;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mes-list li .diyige {
+  padding-left: 38px;
+  width: 550px;
+}
+.mes-list li .dierge {
+  width: 145px;
+  color: #999;
+}
+.test {
+  color: #000;
+}
+header {
+  height: 43px;
+  background-color: #333;
+  border-bottom: 2px solid #606060;
+  line-height: 42px;
+}
+header .nav-main {
+  width: 960px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+}
+section {
+  width: 960px;
+  margin: 10px auto 10px;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  background-color: #fff;
+}
+section .model {
+  width: 140px;
+  border-right: 1px dashed #dcdddd;
+}
+section .model ul {
+  text-align: right;
+  padding: 0 20px 10px 0;
+}
+section .model ul li {
+  margin: 10px 0 0;
+}
+section .wrap-r {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
+section .settings {
+  border-bottom: 1px dashed #dcdddd;
+  padding-left: 20px;
+  height: 60px;
+}
+section .settings ul {
+  clear: both;
+}
+section .settings ul li {
+  float: left;
+  margin: 10px 10px 0 0;
+}
+section .settings .state-settings input {
+  width: 30px;
+}
+section .content {
+  width: 600px;
+  height: 400px;
+  border: 1px solid #dcdddd;
+  margin: 10px auto 10px;
+}
