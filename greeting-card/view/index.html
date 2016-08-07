@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>给你们写个bug</title>
   <link rel="stylesheet" href="../stylesheets/greeting-card.css"/>
+  <script src="../javascript/jquery/jquery.js"></script>
+  <script src="../javascript/main.js"></script>
 </head>
 <body>
 <!-- <ul class="mes-list">
@@ -20,7 +22,7 @@
   <div class="nav-main">自由贺卡</div>
 </header>
 <section>
-  <div class="model wrap-l">
+  <div class="model wrap-l" id="model-rem">
     <ul>
       <li>
         <input type="button" value="称呼" />
@@ -34,7 +36,7 @@
     </ul>
   </div>
   <div class="wrap-r">
-    <div class="settings">
+    <div class="settings" id="model-set">
       <ul class="font-settings">
         <li>
           字体颜色
@@ -74,7 +76,7 @@
       </ul>
     </div>
 
-    <div class="content">
+    <div class="content" id="model-box">
     
     </div>
   </div>
