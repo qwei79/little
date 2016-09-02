@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>给你们写个bug</title>
   <link rel="stylesheet" href="../stylesheets/greeting-card.css"/>
-  <script src="../javascript/jquery/jquery.js"></script>
-  <script src="../javascript/main.js"></script>
 </head>
 <body>
 <!-- <ul class="mes-list">
@@ -25,13 +23,10 @@
   <div class="model wrap-l" id="model-rem">
     <ul>
       <li>
-        <input type="button" value="称呼" />
+        <input type="button" id="addButton" value="添加模块" />
       </li>
       <li>
-        <input type="button" value="内容一" />
-      </li>
-      <li>
-        <input type="button" value="添加模块" />
+        <input type="button" id="removeButton" value="删除" disabled />
       </li>
     </ul>
   </div>
@@ -41,7 +36,7 @@
         <li>
           字体颜色
           <select name="font-color">
-            <option selected="selected">字体颜色</option>
+            <option selected="selected">字体颜色1</option>
           </select>
         </li>
         <li>
@@ -77,12 +72,14 @@
     </div>
 
     <div class="content" id="model-box">
-    
+    <!-- 内容区域 -->
     </div>
   </div>
   
 </section>
 
 
+<script src="../javascript/jquery/jquery.js"></script>
+<script src="../javascript/main.js"></script>
 </body>
 </html>
