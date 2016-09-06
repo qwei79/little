@@ -35,38 +35,40 @@
       <ul class="font-settings">
         <li>
           字体颜色
-          <select name="font-color">
+          <select id="font-color" disabled="true">
             <option selected="selected">字体颜色1</option>
+            <option selected="selected">字体颜色2</option>
           </select>
         </li>
         <li>
           字号
-          <select name="font-size">
+          <select id="font-size" disabled="true">
             <option selected="selected">12</option>
+            <option selected="selected">14</option>
           </select>
         </li>
         <li>
-          <input type="button" value="加粗" name="model-b" />
+          <input type="button" value="加粗" id="model-b" disabled="true" />
         </li>
         <li>
-          <input type="button" value="倾斜" name="model-i" />
+          <input type="button" value="倾斜" id="model-i" disabled="true" />
         </li>
         <li>
-          <input type="button" value="下划线" name="model-u" />
+          <input type="button" value="下划线" id="model-u" disabled="true" />
         </li>
       </ul>
       <ul class="state-settings">
-        <li>
-          宽度<input type="text" name="model-w" value="" />px
+        <!-- <li>
+          宽度<input type="text" id="model-w" value="" />px
         </li>
         <li>
-          高度<input type="text" name="model-h" value="" />px
+          高度<input type="text" id="model-h" value="" />px
+        </li> -->
+        <li>
+          X<input type="text" id="model-x" value="" disabled="true" />px
         </li>
         <li>
-          X<input type="text" name="model-x" value="" />px
-        </li>
-        <li>
-          Y<input type="text" name="model-y" value="" />px
+          Y<input type="text" id="model-y" value="" disabled="true" />px
         </li>
       </ul>
     </div>
