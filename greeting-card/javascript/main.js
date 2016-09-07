@@ -25,15 +25,11 @@ setting = {
 // model属性对象包
 function createTeam(oP) {// 传入被选中的p标签对应的模块组信息
     var objDefault = {// 定义一个新增p标签所对应的全部数据的存储空间--默认的数据
-        fontFamily: "楷体",// 字体,默认楷体
         fontSize: "12",// 字号,默认12px
-        fontColor: "black",//字体颜色,默认#000
+        color: "#000",//字体颜色,默认#000
         bold: false,// 加粗,默认不加粗
         italics: false,// 斜体,默认非斜体
         underline: false,// 下划线,默认无下划线
-        textAlign: "left",// 水平对齐方式,默认居中
-        turnLine: true,// 自动换行
-        narrow: false,// 缩小字体一行显示
         X: "0",// left值
         Y: "0"// top值
     };
@@ -45,7 +41,7 @@ function createTeam(oP) {// 传入被选中的p标签对应的模块组信息
         // 添加对应样式
         oP.style.fontFamily = '楷体';
         oP.style.fontSize = '12px';
-        oP.style.fontColor = '#000';
+        oP.style.color = '#000';
         oP.style.textAlign = 'left';
         oP.style.left = 0;
         oP.style.top = 0;
@@ -104,7 +100,12 @@ function targetModel(ev) {
         for (var i = 0; i < setting.fontSize.options.length; i++) {
             if (setting.fontSize.options[i].text == fontSizeOption) setting.fontSize.selectedIndex = i;
         }
-        
+        //控制字体颜色按钮处于哪个选项
+        var fontColorOption = oTarP[target.id].obj.color;
+        for (var i = 0; i < setting.fontColor.options.length; i++) {
+            if (setting.fontColor.options[i].text == fontColorOption) setting.fontColor.selectedIndex = i;
+        }
+
         // 把被选中的model存入全局变量
         targetNow = target;
         return targetNow;
@@ -191,24 +192,36 @@ setting.modelUnder.onclick = function () {
     targetNow.style.textDecoration == 'underline' ? targetNow.style.textDecoration = 'normal' : targetNow.style.textDecoration = 'underline';
 }
 // 选择类按钮
-// 字号
 // 获取下拉菜单返回值
 function fontSelect (sObj) {
     var oSelect = sObj;
     // createTeam(oSelect);
     return oSelect.options[oSelect.selectedIndex].value;
 }
+// 状态更新
+function updateState (nowSelete) {
+    // 删除选中状态
+    for (var i = nowSelete.options.length - 1; i >= 0; i--) {
+        nowSelete.options[i].removeAttribute('selected');
+    };
+    // 给对应选项已选中状态
+    nowSelete.options[nowSelete.selectedIndex].setAttribute('selected', 'selected');
+    // 更新全局对象中P元素的私有属性
+    oTarP[targetNow.id].obj.fontSize = fontSelect(setting.fontSize);
+}
+// 字号
 setting.fontSize.onchange = function () {
     // 设置字号
     targetNow.style.fontSize = fontSelect(setting.fontSize) + 'px';
+    // 更新状态
+    updateState(this);
+}
+// 字色
+setting.fontColor.onchange = function () {
+    // 设置字体颜色
+    targetNow.style.color = fontSelect(setting.fontColor);
     // 更新按钮状态
-    for (var i = this.options.length - 1; i >= 0; i--) {
-        this.options[i].removeAttribute('selected');
-    };
-    this.options[this.selectedIndex].setAttribute('selected', 'selected');
-    // 更新全局对象中P元素的私有属性
-    var test = oTarP[targetNow.id];
-    test.obj.fontSize = fontSelect(setting.fontSize);
+    updateState(this);
 }
 
 
