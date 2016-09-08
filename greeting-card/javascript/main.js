@@ -95,16 +95,21 @@ function targetModel(ev) {
         setting.modelX.removeAttribute('disabled');
         setting.modelY.removeAttribute('disabled');
 
-        //控制字号按钮处于哪个选项
+        // 控制字号按钮处于哪个选项
         var fontSizeOption = oTarP[target.id].obj.fontSize;
         for (var i = 0; i < setting.fontSize.options.length; i++) {
             if (setting.fontSize.options[i].text == fontSizeOption) setting.fontSize.selectedIndex = i;
         }
-        //控制字体颜色按钮处于哪个选项
+        // 控制字体颜色按钮处于哪个选项
         var fontColorOption = oTarP[target.id].obj.color;
         for (var i = 0; i < setting.fontColor.options.length; i++) {
             if (setting.fontColor.options[i].text == fontColorOption) setting.fontColor.selectedIndex = i;
         }
+
+        // 更新X值
+        setting.modelX.value = parseFloat(target.style.left);
+        // 更新Y值
+        setting.modelY.value = parseFloat(target.style.top);
 
         // 把被选中的model存入全局变量
         targetNow = target;
@@ -115,7 +120,10 @@ function targetModel(ev) {
 function missModel() {
     // 设置删除按钮实效
     removeB.setAttribute('disabled', true);
-    // 设置“设置按钮组”实效
+    // 清空X与Y的值
+    // setting.modelX.removeAttribute('value');
+    // setting.modelX.removeAttribute('value');
+    // 设置“设置按钮组”失效
     setting.fontSize.setAttribute('disabled', true);
     setting.fontColor.setAttribute('disabled', true);
     setting.modelBold.setAttribute('disabled', true);
@@ -172,6 +180,11 @@ function drag(ev) {
                 // 正常拖动
                 targetNow.style.top = ev.clientY - oModelBox.offsetTop - mouseTop + 'px';
             }
+
+            // 更新X值
+            setting.modelX.value = parseFloat(targetNow.style.left);
+            // 更新Y值
+            setting.modelY.value = parseFloat(targetNow.style.top);
         })
     }
 }
@@ -191,23 +204,35 @@ setting.modelItalic.onclick = function () {
 setting.modelUnder.onclick = function () {
     targetNow.style.textDecoration == 'underline' ? targetNow.style.textDecoration = 'normal' : targetNow.style.textDecoration = 'underline';
 }
+
+// 状态更新
+function updateState (nowSelete) {
+    if (!targetNow) {return;};
+    if(nowSelete){
+        // 删除选中状态
+        for (var i = nowSelete.options.length - 1; i >= 0; i--) {
+            nowSelete.options[i].removeAttribute('selected');
+        };
+        // 给对应选项已选中状态
+        nowSelete.options[nowSelete.selectedIndex].setAttribute('selected', 'selected');
+    }
+    
+    // 更新全局对象中P元素的私有属性
+    // 字号
+    oTarP[targetNow.id].obj.fontSize = fontSelect(setting.fontSize);
+    // 字体颜色
+    oTarP[targetNow.id].obj.Color = fontSelect(setting.fontColor);
+    // X值
+    oTarP[targetNow.id].obj.X = setting.modelX.value;
+    // Y值
+    oTarP[targetNow.id].obj.Y = setting.modelY.value;
+}
 // 选择类按钮
 // 获取下拉菜单返回值
 function fontSelect (sObj) {
     var oSelect = sObj;
     // createTeam(oSelect);
     return oSelect.options[oSelect.selectedIndex].value;
-}
-// 状态更新
-function updateState (nowSelete) {
-    // 删除选中状态
-    for (var i = nowSelete.options.length - 1; i >= 0; i--) {
-        nowSelete.options[i].removeAttribute('selected');
-    };
-    // 给对应选项已选中状态
-    nowSelete.options[nowSelete.selectedIndex].setAttribute('selected', 'selected');
-    // 更新全局对象中P元素的私有属性
-    oTarP[targetNow.id].obj.fontSize = fontSelect(setting.fontSize);
 }
 // 字号
 setting.fontSize.onchange = function () {
@@ -223,7 +248,22 @@ setting.fontColor.onchange = function () {
     // 更新按钮状态
     updateState(this);
 }
-
+// 输入框类
+// X的值
+setting.modelX.onkeydown = setting.modelX.onkeyup = function () {
+    targetNow.style.left = setting.modelX.value + 'px';
+    // 更新input状态
+    updateState();
+}
+// setting.modelX.onchange = function () {
+//     targetNow.style.left = setting.modelX.value;
+// }
+// Y的值
+setting.modelY.onkeydown = setting.modelY.onkeyup = function () {
+    targetNow.style.top = setting.modelY.value + 'px';
+    // 更新input状态
+    updateState();
+}
 
 // 添加model绑定
 $(addB).on('click', addModel);
