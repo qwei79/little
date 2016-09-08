@@ -20,6 +20,7 @@ setting = {
     // modelHeigth : document.getElementById('model-h'),
     modelX : document.getElementById('model-x'),
     modelY : document.getElementById('model-y'),
+    modelText : document.getElementById('model-text')
 }
 
 // model属性对象包
@@ -31,7 +32,8 @@ function createTeam(oP) {// 传入被选中的p标签对应的模块组信息
         italics: false,// 斜体,默认非斜体
         underline: false,// 下划线,默认无下划线
         X: "0",// left值
-        Y: "0"// top值
+        Y: "0",// top值
+        text: ""
     };
     if (oP.obj) {
         // 如果传入的标签带了相关的参数,那么就用传入标签的参数
@@ -94,6 +96,7 @@ function targetModel(ev) {
         // setting.modelHeigth.removeAttribute('disabled');
         setting.modelX.removeAttribute('disabled');
         setting.modelY.removeAttribute('disabled');
+        setting.modelText.removeAttribute('disabled');
 
         // 控制字号按钮处于哪个选项
         var fontSizeOption = oTarP[target.id].obj.fontSize;
@@ -110,6 +113,9 @@ function targetModel(ev) {
         setting.modelX.value = parseFloat(target.style.left);
         // 更新Y值
         setting.modelY.value = parseFloat(target.style.top);
+
+        // 更新内容
+        setting.modelText.value = target.innerHTML;
 
         // 把被选中的model存入全局变量
         targetNow = target;
@@ -133,6 +139,7 @@ function missModel() {
     // setting.modelHeigth.setAttribute('disabled', true);
     setting.modelX.setAttribute('disabled', true);
     setting.modelY.setAttribute('disabled', true);
+    setting.modelText.setAttribute('disabled', true);
     // 释放变量
     targetNow = null;
 }
@@ -226,6 +233,8 @@ function updateState (nowSelete) {
     oTarP[targetNow.id].obj.X = setting.modelX.value;
     // Y值
     oTarP[targetNow.id].obj.Y = setting.modelY.value;
+    // 内容
+    oTarP[targetNow.id].obj.text = setting.modelText.value;
 }
 // 选择类按钮
 // 获取下拉菜单返回值
@@ -261,6 +270,12 @@ setting.modelX.onkeydown = setting.modelX.onkeyup = function () {
 // Y的值
 setting.modelY.onkeydown = setting.modelY.onkeyup = function () {
     targetNow.style.top = setting.modelY.value + 'px';
+    // 更新input状态
+    updateState();
+}
+// 内容
+setting.modelText.onkeydown = setting.modelText.onkeyup = function () {
+    targetNow.innerHTML = setting.modelText.value;
     // 更新input状态
     updateState();
 }

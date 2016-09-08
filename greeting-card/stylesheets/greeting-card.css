@@ -145,7 +145,13 @@ section .settings ul li {
   margin: 10px 10px 0 0;
 }
 section .settings .state-settings input {
-  width: 30px;
+  width: 23px;
+  padding-left: 2px;
+  margin-left: 3px;
+  margin-right: 2px;
+}
+section .settings .state-settings input#model-text {
+  width: 515px;
 }
 section .content {
   position: relative;
