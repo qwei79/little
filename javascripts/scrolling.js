@@ -1,7 +1,7 @@
 function startMove(){
   var sScrolling=document.getElementsByClassName("sscrolling"),i;
   var sScrollingY = document.getElementsByClassName("sscrolling-y"),j;
-  for(j = 0, j<sScrollingY.length; j++){
+  for(j = 0; j<sScrollingY.length; j++){
     startMoveY(j);
   }
   for(i=0; i<sScrolling.length; i++){
