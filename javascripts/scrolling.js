@@ -67,10 +67,10 @@ function startMoveY(j){
   sLi = sUl.getElementsByTagName("li");
   //设定li的宽度统一为第一个li的宽度
   for(var i = 0; i<sLi.length; i++){
-    sLi[i].style.width = sLi[0].offsetHeight;
+    sLi[i].style.width = sLi[0].offsetWidth;
   }
   var rootUl = sUl.innerHTML;
-  sUL.innerHTML += sUl.innerHTML;
+  sUl.innerHTML += sUl.innerHTML;
   for(var i = 0; i<sLi.length; i++){
     sUlh += sLi[i].offsetHeight + 10;
   }
@@ -85,16 +85,16 @@ function startMoveY(j){
   }
   sUl.style.height = sUlh + 'px';
   //设置ul的宽度
-  sScrolling.style.width = sLi[0].offsetHeight + 10 + 'px';
+  sScrolling.style.width = sLi[0].offsetWidth + 10 + 'px';
   //滚动方法
   function timeY(){
-    if(sUl.offsetLeft < -(sUlh/2)){
-      sUl.style.left = -1 + 'px';
+    if(sUl.offsetTop < -(sUlh/2)){
+      sUl.style.top = -1 + 'px';
     }
-    sUl.style.left = sUl.offsetLeft -1 +'px';
+    sUl.style.top = sUl.offsetTop -1 +'px';
   }
   var timeYauto;
   timeYauto = setInterval(timeY,10);
-  sScrolling.onmouseover = function(){clearInterval(timeY)};
+  sScrolling.onmouseover = function(){clearInterval(timeYauto)};
   sScrolling.onmouseout = function(){timeYauto = setInterval(timeY,10)};
 }
