@@ -60,7 +60,7 @@ function startMoveX(i,sSheight){
 * 这里放的是竖版的js
 * 实现原理和横板一样，后期看看能不能合并……
 */
-function starMoveY(j){
+function startMoveY(j){
   var sScrolling = document.getElementsByClassName("sscrolling-y")[j];
   var sUl,sLi,sUlh = 0;
   sUl = sScrolling.getElementsByTagName("ul")[0];
