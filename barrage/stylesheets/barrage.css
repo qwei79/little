@@ -1,0 +1,119 @@
+@charset "utf-8";
+/*公共标签样式*/
+html {
+  -webkit-text-size-adjust: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body {
+  font-size: 12px;
+  font-family: "microsoft Yahei", "KaiTi";
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+}
+em {
+  font-style: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+select,
+input,
+img,
+select {
+  vertical-align: middle;
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table tr {
+  margin: 0px;
+}
+/* 清除浮动 */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+header {
+  height: 43px;
+  background-color: #333;
+  border-bottom: 2px solid #606060;
+  line-height: 42px;
+}
+header .nav-main {
+  width: 960px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+}
+.barrage-show {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border: 1px solid #420;
+  margin: 100px;
+}
+.barrage-show .bullet {
+  position: absolute;
+  border: 1px solid #024;
+}
+footer {
+  margin: 0 auto;
+  background-color: #333;
+  border-top: 2px solid #606060;
+  line-height: 16px;
+}
+footer .content {
+  width: 960px;
+  margin: 0 auto;
+  padding: 10px 0;
+  color: #fff;
+  text-align: center;
+}
+section {
+  width: 960px;
+  margin: 10px auto 10px;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  background-color: #fff;
+}
