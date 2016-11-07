@@ -135,3 +135,12 @@ function barrageMain(obj) {
         bullet.parentNode.removeChild(bullet)
     },obj.time);
 }
+
+// 按钮事件
+document.getElementById('button').onclick = function () {
+    var obj = {};
+    obj.centent = document.getElementById('text-box').value;
+    obj.img = document.getElementById('head-img').getAttribute('src');
+    barrageMain(obj);
+    document.getElementById('text-box').value = '';
+}
