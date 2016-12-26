@@ -144,3 +144,49 @@ document.getElementById('button').onclick = function () {
     barrageMain(obj);
     document.getElementById('text-box').value = '';
 }
+
+var waiterJson = [
+        {
+            "img":"../images/userhead.jpg",
+            "centent":"好好好",
+            "start":"right",
+            "time":"5000",
+            "cubic":"linear"
+        },
+        {
+            "img":"../images/userhead.jpg",
+            "centent":"你说好就好？",
+            "start":"right",
+            "time":"5000",
+            "cubic":"linear"
+        },
+        {
+            "img":"../images/userhead.jpg",
+            "centent":"难不成呢",
+            "start":"right",
+            "time":"5000",
+            "cubic":"linear"
+        },
+        {
+            "img":"../images/userhead.jpg",
+            "centent":"我擦擦，这么多人",
+            "start":"right",
+            "time":"5000",
+            "cubic":"linear"
+        }
+    ],
+    waiterBool = true,
+    waiterSet;
+document.getElementById('waiter-set').onclick = function () {
+    if(waiterBool){
+        waiterBool = false;
+        this.value = '朕想静静';
+        waiterSet = setInterval('barrageMain(waiterJson[thisRond(0,3)])',thisRond(500,800));
+        console.log(waiterBool);
+    } else {
+        waiterBool = true;
+        clearInterval(waiterSet);
+        this.value = '来人啊！';
+        console.log(waiterBool);
+    }
+}
