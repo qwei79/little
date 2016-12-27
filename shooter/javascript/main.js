@@ -291,6 +291,7 @@ document.getElementById('waiter-set').onclick = function () {
             for (var i = cloud.length - 1; i >= 0; i--) {
                 cloud[i].parentNode.removeChild(cloud[i]);
             };
+            score.innerHTML = prefixInteger(0,9);
         }
         waiterBool = false;
         this.value = '朕想静静';
@@ -341,5 +342,5 @@ function gameOver() {
         left : false,
         right : false
     };
-    alert('你个菜鸡！');
+    alert('你个菜鸡！只得了' + parseInt(score.innerHTML) + '分～');
 }
