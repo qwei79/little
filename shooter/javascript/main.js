@@ -158,22 +158,41 @@ function barrageMain(obj) {
 }
 
 // 键盘事件
-var lead = document.getElementById('lead');
-document.onkeydown = function () {
-    var ev = event || window.event || arguments.callee.caller.arguments[0];
-    if (ev && ev.keyCode == 39) {
-        // 按右方向键
-        if (parseInt(getStyle(lead,'left')) > 560) {
-            return;
-        }
-        lead.style.left = parseInt(getStyle(lead,'left')) + 30 + 'px';
-    } else if (ev && ev.keyCode == 37) {
-        // 按左方向键
+var lead = document.getElementById('lead'),
+    direction = {
+        left : false,
+        right : false
+    };
+setInterval(function () {
+    if (direction.left) {
         if (parseInt(getStyle(lead,'left')) < 10) {
             return;
         }
         lead.style.left = parseInt(getStyle(lead,'left')) - 30 + 'px';
     }
+    if (direction.right) {
+        if (parseInt(getStyle(lead,'left')) > 560) {
+            return;
+        }
+        lead.style.left = parseInt(getStyle(lead,'left')) + 30 + 'px';
+    }
+},50);
+document.onkeydown = function () {
+    var ev = event || window.event || arguments.callee.caller.arguments[0];
+    if (ev && ev.keyCode == 39) {
+        // 按右方向键
+        direction.right = true;
+    } else if (ev && ev.keyCode == 37) {
+        // 按左方向键
+        direction.left = true;
+    }
+}
+document.onkeyup = function () {
+    var ev = event || window.event || arguments.callee.caller.arguments[0];
+    direction = {
+        left : false,
+        right : false
+    };
 }
 
 var waiterJson = [
@@ -279,7 +298,7 @@ document.getElementById('waiter-set').onclick = function () {
         scoreTime = setInterval(function () {
             score.innerHTML = prefixInteger(parseInt(score.innerHTML) + 1,9);
         },100);
-        whetherTime = setInterval('whetherOver()',10);
+        whetherTime = setInterval('whetherOver()',50);
     } else {
         waiterBool = true;
         clearInterval(waiterSet);
@@ -318,6 +337,9 @@ function gameOver() {
         clearInterval(cloud[i].timer);
         clearInterval(cloud[i].removeTime);
     };
-
+    direction = {
+        left : false,
+        right : false
+    };
     alert('你个菜鸡！');
 }
