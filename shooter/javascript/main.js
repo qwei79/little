@@ -161,7 +161,9 @@ function barrageMain(obj) {
 var lead = document.getElementById('lead'),
     direction = {
         left : false,
-        right : false
+        right : false,
+        top : false,
+        bottom : false
     };
 setInterval(function () {
     if (direction.left) {
@@ -176,22 +178,42 @@ setInterval(function () {
         }
         lead.style.left = parseInt(getStyle(lead,'left')) + 30 + 'px';
     }
+    if (direction.top) {
+        if (parseInt(getStyle(lead,'top')) < 10) {
+            return;
+        }
+        lead.style.top = parseInt(getStyle(lead,'top')) - 30 + 'px';
+    }
+    if (direction.bottom) {
+        if (parseInt(getStyle(lead,'top')) > 540) {
+            return;
+        }
+        lead.style.top = parseInt(getStyle(lead,'top')) + 30 + 'px';
+    }
 },50);
 document.onkeydown = function () {
     var ev = event || window.event || arguments.callee.caller.arguments[0];
-    if (ev && ev.keyCode == 39) {
-        // 按右方向键
-        direction.right = true;
-    } else if (ev && ev.keyCode == 37) {
+    if (ev && ev.keyCode == 37) {
         // 按左方向键
         direction.left = true;
+    } else if (ev && ev.keyCode == 38) {
+        // 按左方向键
+        direction.top = true;
+    } else if (ev && ev.keyCode == 39) {
+        // 按右方向键
+        direction.right = true;
+    } else if (ev && ev.keyCode == 40) {
+        // 按左方向键
+        direction.bottom = true;
     }
 }
 document.onkeyup = function () {
     var ev = event || window.event || arguments.callee.caller.arguments[0];
     direction = {
         left : false,
-        right : false
+        right : false,
+        top : false,
+        bottom : false
     };
 }
 
@@ -314,7 +336,7 @@ function whetherOver() {
         return;
     }
     for (var i = enemy.length - 1; i >= 0; i--) {
-        if (parseInt(getStyle(enemy[i], 'left')) - parseInt(getStyle(lead, 'left')) >= -30 && parseInt(getStyle(enemy[i], 'left')) - parseInt(getStyle(lead, 'left')) <= 30 && parseInt(getStyle(enemy[i], 'top')) >= 544) {
+        if (parseInt(getStyle(enemy[i], 'left')) - parseInt(getStyle(lead, 'left')) >= -30 && parseInt(getStyle(enemy[i], 'left')) - parseInt(getStyle(lead, 'left')) <= 30 && parseInt(getStyle(enemy[i], 'top')) - parseInt(getStyle(lead, 'top')) >= -46 && parseInt(getStyle(enemy[i], 'top')) - parseInt(getStyle(lead, 'top')) <= 46) {
             gameOver();
         }
     };
