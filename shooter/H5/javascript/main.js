@@ -166,87 +166,34 @@ var lead = document.getElementById('lead'),
         bottom : false
     };
 
-// // 按键控制
-// setInterval(function () {
-//     if (direction.left) {
-//         if (parseInt(getStyle(lead,'left')) < 50) {
-//             return;
-//         }
-//         lead.style.left = parseInt(getStyle(lead,'left')) - 30 + 'px';
-//     }
-//     if (direction.right) {
-//         if (parseInt(getStyle(lead,'right')) < 50) {
-//             return;
-//         }
-//         lead.style.left = parseInt(getStyle(lead,'left')) + 30 + 'px';
-//     }
-//     if (direction.top) {
-//         if (parseInt(getStyle(lead,'top')) < 50) {
-//             return;
-//         }
-//         lead.style.top = parseInt(getStyle(lead,'top')) - 30 + 'px';
-//     }
-//     if (direction.bottom) {
-//         if (parseInt(getStyle(lead,'bottom')) > 50) {
-//             return;
-//         }
-//         lead.style.top = parseInt(getStyle(lead,'top')) + 30 + 'px';
-//     }
-// },50);
-// document.onkeydown = function () {
-//     var ev = event || window.event || arguments.callee.caller.arguments[0];
-//     if (ev && ev.keyCode == 37) {
-//         // 按左方向键
-//         direction.left = true;
-//     } else if (ev && ev.keyCode == 38) {
-//         // 按左方向键
-//         direction.top = true;
-//     } else if (ev && ev.keyCode == 39) {
-//         // 按右方向键
-//         direction.right = true;
-//     } else if (ev && ev.keyCode == 40) {
-//         // 按左方向键
-//         direction.bottom = true;
-//     }
-// }
-// document.onkeyup = function () {
-//     var ev = event || window.event || arguments.callee.caller.arguments[0];
-//     direction = {
-//         left : false,
-//         right : false,
-//         top : false,
-//         bottom : false
-//     };
-// }
 // 重力感应控制
 window.addEventListener('deviceorientation', function () {
     var ev = event || window.event || arguments.callee.caller.arguments[0];
-    if (ev && ev.gamma < -15) {
-        // 手机向左
-        if (parseInt(getStyle(lead,'left')) < 50) {
-            return;
+    if(!waiterBool){
+        if (ev && ev.gamma < -15) {
+            // 手机向左
+            if (!(parseFloat(getStyle(lead,'left')) <= (0.5 * parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize'))))) {
+                lead.style.left = parseInt(getStyle(lead,'left')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3) + 'px';
+            }
         }
-        lead.style.left = parseInt(getStyle(lead,'left')) - 30 + 'px';
-    } else if (ev && ev.beta < -5) {
-        // 手机向上
-        if (parseInt(getStyle(lead,'bottom')) > 1500) {
-            return;
+        if (ev && ev.beta < -5) {
+            // 手机向上
+            if (!(parseFloat(getStyle(lead,'top')) / parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) < 0.5)) {
+                lead.style.top = parseInt(getStyle(lead,'top')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3) + 'px';
+            }
         }
-        lead.style.bottom = parseInt(getStyle(lead,'bottom')) + 30 + 'px';
-    } else if (ev && ev.gamma > 15) {
-        // 手机向右
-        if (parseInt(getStyle(lead,'right')) < 50) {
-            return;
+        if (ev && ev.gamma > 15) {
+            // 手机向右
+            if (!(parseFloat(getStyle(lead,'left')) >= parseFloat(getStyle(document.getElementById('battle-field'), 'width')) - parseFloat(getStyle(lead,'width')) - (1 * parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize'))))) {
+                lead.style.left = parseInt(getStyle(lead,'left')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3) + 'px';
+            }
         }
-        lead.style.left = parseInt(getStyle(lead,'left')) + 30 + 'px';
-    } else if (ev && ev.beta > 25) {
-        // 手机向下
-        if (parseInt(getStyle(lead,'bottom')) < 50) {
-            return;
+        if (ev && ev.beta > 25) {
+            // 手机向下
+            if (!((parseFloat(getStyle(lead,'top'))) >= (parseFloat(getStyle(document.getElementById('battle-field'),'height')) - (parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize')) * 3)))) {
+                lead.style.top = parseInt(getStyle(lead,'top')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3) + 'px';
+            }
         }
-        lead.style.bottom = parseInt(getStyle(lead,'bottom')) - 30 + 'px';
-
-        document.getElementById('waiter-set').value = ev.beta;
     }
 }, true);
 
@@ -370,7 +317,10 @@ function whetherOver() {
         return;
     }
     for (var i = enemy.length - 1; i >= 0; i--) {
-        if (parseInt(getStyle(enemy[i], 'left')) - parseInt(getStyle(lead, 'left')) >= -30 && parseInt(getStyle(enemy[i], 'left')) - parseInt(getStyle(lead, 'left')) <= 30 && parseInt(getStyle(enemy[i], 'top')) - parseInt(getStyle(lead, 'top')) >= -46 && parseInt(getStyle(enemy[i], 'top')) - parseInt(getStyle(lead, 'top')) <= 46) {
+        if (parseFloat(getStyle(enemy[i], 'left')) - parseFloat(getStyle(lead, 'left')) >= -parseFloat(getStyle(lead, 'width')) && parseFloat(getStyle(enemy[i], 'left')) - parseFloat(getStyle(lead, 'left')) <= parseFloat(getStyle(lead, 'width')) && parseInt(getStyle(enemy[i], 'top')) - parseInt(getStyle(lead, 'top')) >= -parseFloat(getStyle(lead, 'height')) && parseInt(getStyle(enemy[i], 'top')) - parseInt(getStyle(lead, 'top')) <= parseFloat(getStyle(lead, 'height'))) {
+
+            // document.getElementById('testprint').innerHTML = parseFloat(getStyle(enemy[i],'top'));
+            // document.getElementById('score').innerHTML = parseFloat(getStyle(lead,'top'));
             gameOver();
         }
     };
