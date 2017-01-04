@@ -173,25 +173,25 @@ window.addEventListener('deviceorientation', function () {
         if (ev && ev.gamma < -15) {
             // 手机向左
             if (!(parseFloat(getStyle(lead,'left')) <= (0.5 * parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize'))))) {
-                lead.style.left = parseInt(getStyle(lead,'left')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3) + 'px';
+                lead.style.left = parseInt(getStyle(lead,'left')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * ev.gamma * 0.1) + 'px';
             }
         }
         if (ev && ev.beta < -5) {
             // 手机向上
             if (!(parseFloat(getStyle(lead,'top')) / parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) < 0.5)) {
-                lead.style.top = parseInt(getStyle(lead,'top')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3) + 'px';
+                lead.style.top = parseInt(getStyle(lead,'top')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * ev.beta * 0.1) + 'px';
             }
         }
         if (ev && ev.gamma > 15) {
             // 手机向右
             if (!(parseFloat(getStyle(lead,'left')) >= parseFloat(getStyle(document.getElementById('battle-field'), 'width')) - parseFloat(getStyle(lead,'width')) - (1 * parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize'))))) {
-                lead.style.left = parseInt(getStyle(lead,'left')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3) + 'px';
+                lead.style.left = parseInt(getStyle(lead,'left')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * ev.gamma * 0.1) + 'px';
             }
         }
         if (ev && ev.beta > 25) {
             // 手机向下
             if (!((parseFloat(getStyle(lead,'top'))) >= (parseFloat(getStyle(document.getElementById('battle-field'),'height')) - (parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize')) * 3)))) {
-                lead.style.top = parseInt(getStyle(lead,'top')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3) + 'px';
+                lead.style.top = parseInt(getStyle(lead,'top')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * ev.beta * 0.1) + 'px';
             }
         }
     }
