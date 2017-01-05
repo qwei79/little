@@ -96,6 +96,7 @@ section {
   height: 100%;
   width: 100%;
   background: #6cf;
+  overflow: hidden;
 }
 .battle-field .score {
   position: absolute;

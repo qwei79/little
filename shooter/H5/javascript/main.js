@@ -173,25 +173,25 @@ window.addEventListener('deviceorientation', function () {
         if (ev && ev.gamma < -2) {
             // 手机向左
             if (!(parseFloat(getStyle(lead,'left')) <= (0.5 * parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize'))))) {
-                lead.style.left = parseInt(getStyle(lead,'left')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * Math.pow(ev.gamma,3) * 0.001) + 'px';
+                lead.style.left = Math.abs(Math.pow(ev.gamma,3) * 0.001) > 3.75 ? parseInt(getStyle(lead,'left')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3.75) + 'px' : parseInt(getStyle(lead,'left')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * Math.abs(Math.pow(ev.gamma,3) * 0.001)) + 'px';
             }
         }
         if (ev && ev.beta < -1) {
             // 手机向上
             if (!(parseFloat(getStyle(lead,'top')) / parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) < 0.5)) {
-                lead.style.top = parseInt(getStyle(lead,'top')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * Math.pow(ev.beta,3) * 0.001) + 'px';
+                lead.style.top = Math.abs(Math.pow(ev.beta,3) * 0.001) > 3.75 ? parseInt(getStyle(lead,'top')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3.75) + 'px' : parseInt(getStyle(lead,'top')) - (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * Math.abs(Math.pow(ev.beta,3) * 0.001)) + 'px';
             }
         }
         if (ev && ev.gamma > 2) {
             // 手机向右
             if (!(parseFloat(getStyle(lead,'left')) >= parseFloat(getStyle(document.getElementById('battle-field'), 'width')) - parseFloat(getStyle(lead,'width')) - (1 * parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize'))))) {
-                lead.style.left = parseInt(getStyle(lead,'left')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * Math.pow(ev.gamma,3) * 0.001) + 'px';
+                lead.style.left = Math.pow(ev.gamma,3) * 0.001 > 3.75 ? parseInt(getStyle(lead,'left')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3.75) + 'px' : parseInt(getStyle(lead,'left')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * Math.pow(ev.gamma,3) * 0.001) + 'px';
             }
         }
         if (ev && ev.beta > 3) {
             // 手机向下
             if (!((parseFloat(getStyle(lead,'top'))) >= (parseFloat(getStyle(document.getElementById('battle-field'),'height')) - (parseFloat(getStyle(document.getElementsByTagName('html')[0], 'fontSize')) * 3)))) {
-                lead.style.top = parseInt(getStyle(lead,'top')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * Math.pow(ev.beta,3) * 0.001) + 'px';
+                lead.style.top = Math.pow(ev.beta,3) * 0.001 > 3.75 ? parseInt(getStyle(lead,'top')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * 3.75) + 'px' : parseInt(getStyle(lead,'top')) + (parseFloat(getStyle(document.getElementById('battle-field'), 'fontSize')) * Math.pow(ev.beta,3) * 0.001) + 'px';
             }
         }
     }
