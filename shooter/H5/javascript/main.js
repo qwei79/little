@@ -157,6 +157,22 @@ function barrageMain(obj) {
     },obj.time);
 }
 
+function missileMain() {
+
+    var battleField = document.getElementById('battle-field');  // 获取战场
+    var missile = document.createElement('div');           // 创建导弹
+    missile.className = 'missile';
+    battleField.appendChild(missile);
+
+    missile.style.left = getStyle(lead,'left');
+    missile.style.top = getStyle(lead,'top');
+    startMove(missile,{top:(battleField.offsetHeight - parseFloat(getStyle(missile,'top')))},{duration:2000},{easing:'linear'});
+
+    missile.removeTime = setTimeout(function () {
+        missile.parentNode.removeChild(missile)
+    },2000);
+}
+
 // 键盘事件
 var lead = document.getElementById('lead'),
     direction = {
@@ -292,6 +308,8 @@ var waiterJson = [
     overBool = false,
     waiterSet,
     whetherTime,
+    missile,
+    missileObj,
     score = document.getElementById('score'),
     scoreTime;
 document.getElementById('waiter-set').onclick = function () {
@@ -305,6 +323,10 @@ document.getElementById('waiter-set').onclick = function () {
             for (var i = cloud.length - 1; i >= 0; i--) {
                 cloud[i].parentNode.removeChild(cloud[i]);
             };
+            var missileEle = getElementsByClassName(document,'missile');
+            for (var i = missileEle.length - 1; i >= 0; i--) {
+                missileEle[i].parentNode.removeChild(missileEle[i]);
+            };
             score.innerHTML = prefixInteger(0,9);
         }
         waiterBool = false;
@@ -314,12 +336,17 @@ document.getElementById('waiter-set').onclick = function () {
         scoreTime = setInterval(function () {
             score.innerHTML = prefixInteger(parseInt(score.innerHTML) + 1,9);
         },100);
+        // 子弹方法
+        missile = setInterval('missileMain()',1000);
         whetherTime = setInterval('whetherOver()',50);
+        whetherHitTime = setInterval('whetherHit()',50);
     } else {
         waiterBool = true;
         clearInterval(waiterSet);
         clearInterval(scoreTime);
+        clearInterval(missile);
         clearInterval(whetherTime);
+        clearInterval(whetherHitTime);
         this.value = '来吧！';
     }
 }
@@ -337,13 +364,35 @@ function whetherOver() {
         }
     };
 }
+// 击中判断
+function whetherHit() {
+    var enemy = getElementsByClassName(document,'enemy');
+    if (enemy.length === 0) {
+        return;
+    }
+    var missileEle = getElementsByClassName(document,'missile');
+    if (missileEle.length === 0) {
+        return;
+    }
+    for (var i = enemy.length - 1; i >= 0; i--) {
+        for (var j = missileEle.length - 1; j >= 0; j--) {
+            if (parseFloat(getStyle(enemy[i], 'left')) - parseFloat(getStyle(missileEle[j], 'left')) <= 0 && parseFloat(getStyle(enemy[i], 'left')) - parseFloat(getStyle(missileEle[j], 'left')) >= -parseFloat(getStyle(enemy[i], 'width')) && parseInt(getStyle(enemy[i], 'top')) - parseInt(getStyle(missileEle[j], 'top')) >= -parseFloat(getStyle(enemy[i], 'height')) && parseInt(getStyle(enemy[i], 'top')) - parseInt(getStyle(missileEle[j], 'top')) <= 0) {
+                clearInterval(enemy[i].removeTime);
+                clearInterval(missileEle[j].removeTime);
+                enemy[i].parentNode.removeChild(enemy[i]);
+                missileEle[j].parentNode.removeChild(missileEle[j]);
+            }
+        }
+    };
+}
 function gameOver() {
-    clearInterval(whetherTime);
     waiterBool = true;
     overBool = true;
     clearInterval(waiterSet);
     clearInterval(scoreTime);
+    clearInterval(missile);
     clearInterval(whetherTime);
+    clearInterval(whetherHitTime);
     document.getElementById('waiter').style.display = 'block';
     document.getElementById('waiter-set').value = '换个姿势，再来一次！';
 
@@ -356,6 +405,11 @@ function gameOver() {
     for (var i = cloud.length - 1; i >= 0; i--) {
         clearInterval(cloud[i].timer);
         clearInterval(cloud[i].removeTime);
+    };
+    var missileEle = getElementsByClassName(document,'missile');
+    for (var i = missileEle.length - 1; i >= 0; i--) {
+        clearInterval(missileEle[i].timer);
+        clearInterval(missileEle[i].removeTime);
     };
     direction = {
         left : false,
