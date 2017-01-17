@@ -148,3 +148,9 @@ section {
   border: none;
   width: 2rem;
 }
+.missile {
+  position: absolute;
+  z-index: 4;
+  border: 1px solid #000;
+  height: 10px;
+}
