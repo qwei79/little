@@ -1,0 +1,80 @@
+@charset "utf-8";
+html, body{
+  height: 100%;
+  width: 100%;
+}
+section{
+  width: 100%;
+  height: 100%;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  background-color: #fff;
+}
+.shooter{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.battle-field{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #6cf;
+  overflow: hidden;
+  .score{
+    position: absolute;
+    top: 0.1rem;
+    right: 0.2rem;
+    color: #fff;
+    font-size: 0.72rem;
+  }
+  .testprint{
+    position: absolute;
+    top: 1rem;
+    right: 0.2rem;
+    color: #fff;
+    font-size: 0.72rem;
+  }
+  .enemy, .cloud{
+    position: absolute;
+    border: none;
+    z-index: 2;
+    img{
+      width: 100%;
+    }
+  }
+  .cloud{
+    width: 3rem;
+  }
+  .enemy{
+    width: 2rem;
+  }
+}
+.waiter{
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  line-height: 10rem;
+  text-align: center;
+  input{
+    font-size: 1.2rem;
+  }
+}
+.lead{
+  img{
+    border: none;
+    width: 2rem;
+  }
+  margin: 0.1rem 0 0;
+  text-align: center;
+  position: absolute;
+  z-index: 3;
+  // top: 28rem;
+  left: 0.5rem;
+}
+.missile{
+  position: absolute;
+  z-index: 4;
+  border: 1px solid #000;
+  height: 10px;
+}
