@@ -1,0 +1,157 @@
+@charset "utf-8";
+/*公共标签样式*/
+html {
+  -webkit-text-size-adjust: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body {
+  font-size: 12px;
+  font-family: "microsoft Yahei", "KaiTi";
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+}
+em {
+  font-style: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+select,
+input,
+img,
+select {
+  vertical-align: middle;
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table tr {
+  margin: 0px;
+}
+/* 清除浮动 */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+section {
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+  font-size: 1rem;
+}
+.ts-fixed {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  -webkit-transition: all .5s;
+  background: #efeff4;
+  transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
+}
+.ts-fixed.active {
+  transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.ts-fixed .title {
+  background: #fff;
+  border-top: 1px solid #CECFD0;
+  padding: .5rem 0;
+  position: relative;
+}
+.ts-fixed .title h4 {
+  text-align: center;
+}
+.ts-fixed .title p {
+  position: absolute;
+  bottom: .5rem;
+  right: 0;
+}
+.ts-fixed .title p span {
+  margin-left: .5rem;
+}
+.ts-fixed .content {
+  position: relative;
+  display: -moz-box;
+  -moz-box-pack: center;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  display: box;
+  box-pack: center;
+  -webkit-mask-box-image: linear-gradient(to top, transparent, transparent 15%, white 30%, white 70%, transparent 85%, transparent);
+  height: 12rem;
+  width: 100%;
+  overflow: hidden;
+}
+.ts-fixed .content .hightline {
+  position: absolute;
+  top: 50%;
+  height: 2rem;
+  margin-top: -1rem;
+  width: 100%;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+.ts-fixed .content .scroll {
+  z-index: 2;
+  width: 45%;
+  -webkit-transition: all .5s;
+}
+.ts-fixed .content .scroll p {
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #999;
+}
+.ts-fixed .content .scroll p.selected {
+  color: #000;
+}
