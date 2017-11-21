@@ -120,11 +120,45 @@ td, th, caption {padding:0;} /* 去除单元格以及caption表头的padding值 
 .titlebox .titlecont .navbox li {
     float: left;
     cursor: pointer;
+    transition: all .3s;
+}
+.titlebox .titlecont .navbox li:hover {
+    transform: translate(0,-10px);
 }
 .titlebox .titlecont .navbox li img {
     width: 125px;
 }
 .listbox {
     text-align: center;
+}
+.listbox li {
+    position: relative;
+    margin: 0 auto;
+    width: 1280px;
+}
+.listbox li img.listbg {
+    position: relative;
+    z-index: 8;
+}
+@keyframes mymove
+{
+    from {left: -10px;}
+    50% {left: 10px;}
+    to {left: -10px;}
+}
+
+@-webkit-keyframes mymove
+{
+    from {left: -10px;}
+    50% {left: 10px;}
+    to {left: -10px;}
+}
+.listbox li img.listcont {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    z-index: 9;
+    animation:mymove 3s infinite ease;
+    -webkit-animation:mymove 3s infinite ease;
 }
 
