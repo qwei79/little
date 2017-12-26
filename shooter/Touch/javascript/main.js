@@ -493,9 +493,12 @@ function gameOver() {
         left : false,
         right : false
     };
-    alert('你个菜鸡！只得了' + parseInt(score.innerHTML) + '分～');
+  
+    alert('阁下得了' + parseInt(score.innerHTML) + '分～，仍需修炼，来年又是一条好汉');
 }
-
+/*
+** 忠心感谢赵姑娘(zhaoyiding@jd.com)的技术支持
+*/
 
 
 // touch控制
