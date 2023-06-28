@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>无缝滚动</title>
+
+<style>
+.sscrolling{overflow:hidden; position:relative; margin: 0 15px; padding: 0;}
+.sscrolling ul{position:absolute; left:0; top:10px; padding: 0;}
+.sscrolling li{float:left; margin-left:10px;}
+.sscrolling li p{text-align: center;}
+</style>
+
+</head>
+<body>
+<div class="sscrolling">
+	<ul>
+		<li title="第一组第一张">
+			<img src="0.jpg"/>
+			<p>第一组第一张</p>
+		</li>
+		<li title="第一组第二张">
+			<img src="0.jpg"/>
+			<p>第一组第二张</p>
+		</li>
+		<li title="第一组第三张">
+			<img src="0.jpg"/>
+			<p>第一组第三张</p>
+		</li>
+		<li title="第一组第四张">
+			<img src="0.jpg"/>
+			<p>第一组第四张</p>
+		</li>
+		<li title="第一组第五张">
+			<img src="0.jpg"/>
+			<p>第一组第五张</p>
+		</li>
+		<li title="第一组第六张">
+			<img src="0.jpg"/>
+			<p>第一组第六张</p>
+		</li>
+	</ul>
+</div>
+
+<div class="sscrolling">
+	<ul>
+		<li title="第二组第一张">
+			<img src="0.jpg"/>
+			<p>第二组第一张</p>
+		</li>
+		<li title="第二组第二张">
+			<img src="0.jpg"/>
+			<p>第二组第二张</p>
+		</li>
+		<li title="第二组第三张">
+			<img src="0.jpg"/>
+			<p>第二组第三张</p>
+		</li>
+		<li title="第二组第四张">
+			<img src="0.jpg"/>
+			<p>第二组第四张</p>
+		</li>
+		<li title="第二组第五张">
+			<img src="0.jpg"/>
+			<p>第二组第五张</p>
+		</li>
+		<li title="第二组第六张">
+			<img src="0.jpg"/>
+			<p>第二组第六张</p>
+		</li>
+	</ul>
+</div>
+
+<script>
+window.onload=function(){
+	var sScrolling=document.getElementsByClassName("sscrolling"),i;
+	for(i=0; i<sScrolling.length; i++){
+		var sUl=sScrolling[i].getElementsByTagName("ul")[0];
+		var sLi=sUl.getElementsByTagName("li");
+		startMove(i,sLi[0].offsetHeight);
+	}
+}
+function startMove(i,sSheight){
+	var sScrolling=document.getElementsByClassName("sscrolling")[i];
+	var sUl,sLi,sUlw=0;
+	sUl=sScrolling.getElementsByTagName("ul")[0];
+	sLi=sUl.getElementsByTagName('li');
+	var Wc=sUl.innerHTML;
+	sUl.innerHTML+=sUl.innerHTML;
+	for(var ii=0; ii<sLi.length; ii++){
+		sLi[ii].style.height = sSheight;
+		sUlw+=sLi[ii].offsetWidth + 10;
+	}
+	sUl.style.width=sUlw;
+	var Wd=sScrolling.offsetWidth*2-sUl.offsetWidth;
+	for(Wd; Wd>0; Wd=Wd-sUl.offsetWidth){
+		sUl.innerHTML=sUl.innerHTML + Wc;
+	}
+	
+	for(var ii=0; ii<sLi.length; ii++){
+		sLi[ii].style.height = sSheight;
+		sUlw+=sLi[ii].offsetWidth + 10;
+	}
+	sUl.style.width=sUlw;
+	
+	sScrolling.style.height=sSheight + 10;
+	function timer(){
+		if(sUl.offsetLeft<-sUl.offsetWidth/2){
+			sUl.style.left=10;
+		}
+		sUl.style.left=sUl.offsetLeft-1+'px';
+	}
+	var timeri;
+	timeri=setInterval(timer,10);
+	sScrolling.onmouseover=function(){clearInterval(timeri)};
+	sScrolling.onmouseout=function(){timeri=setInterval(timer,10)};
+}
+</script>
+
+</body>
+</html>
