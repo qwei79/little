@@ -27,6 +27,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="test" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
@@ -56,6 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1688390198825</updated>
       <workItem from="1688390200335" duration="1150000" />
+      <workItem from="1688392020732" duration="325000" />
     </task>
     <servers />
   </component>
@@ -72,16 +78,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1980" y="-17" key="CommitChangelistDialog2" timestamp="1688390242687">
       <screen x="1440" y="-96" width="1920" height="1055" />
     </state>
     <state x="1980" y="-17" key="CommitChangelistDialog2/0.25.1440.875/1440.-96.1920.1055@1440.-96.1920.1055" timestamp="1688390242687" />
-    <state x="1540" y="4" width="1720" height="855" key="DiffContextDialog" timestamp="1688390545238">
+    <state x="1540" y="4" width="1720" height="855" key="DiffContextDialog" timestamp="1688392368762">
       <screen x="1440" y="-96" width="1920" height="1055" />
     </state>
-    <state x="1540" y="4" width="1720" height="855" key="DiffContextDialog/0.25.1440.875/1440.-96.1920.1055@1440.-96.1920.1055" timestamp="1688390545238" />
+    <state x="1540" y="4" width="1720" height="855" key="DiffContextDialog/0.25.1440.875/1440.-96.1920.1055@1440.-96.1920.1055" timestamp="1688392368762" />
     <state x="2281" y="302" width="237" height="276" key="MultipleFileMergeDialog" timestamp="1688390238765">
       <screen x="1440" y="-96" width="1920" height="1055" />
     </state>
